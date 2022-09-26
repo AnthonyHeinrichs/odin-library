@@ -1,9 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
+body, h1 {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
 .title {
   margin-left: 60px;
+  margin-top: 18px;
   font-family: 'Roboto', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 900;
   font-size: 72px;
   letter-spacing: -0.07em;
+}
+
+.headerLinks {
+  margin-top: 46px;
+}
+
+.newBook, .login {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+}
+
+.login {
+  margin-right: 60px;
+  margin-left: 24px;
 }
