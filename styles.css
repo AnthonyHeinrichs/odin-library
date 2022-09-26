@@ -10,7 +10,6 @@ header {
 }
 
 a {
-  color: #000000;
   text-decoration: none;
 }
 
@@ -33,9 +32,50 @@ a {
   font-weight: 500;
   font-size: 24px;
   text-align: center;
+  color: #000000;
 }
 
 .login {
   margin-right: 60px;
   margin-left: 24px;
+}
+
+.mainImg {
+  margin-top: 12px;
+  width: 100vw;
+  height: 300px;
+  object-fit: cover;
+}
+
+.imgRef {
+  position: relative;
+  bottom: 48px;
+  right: -5px;
+  text-decoration: none;
+  color: white;
+}
+
+.imgRef > a {
+  color: white;
+}
+
+.form {
+  height: 305px;
+  background: #DCF5B2;
+  position: relative;
+  bottom: 358px;
+  -webkit-transition: height 0.2s linear;
+       -moz-transition: height 0.2s linear;
+        -ms-transition: height 0.2s linear;
+         -o-transition: height 0.2s linear;
+            transition: height 0.2s linear;
+}
+
+.hidden {
+  height: 0px;
+    -webkit-transition: height 0.2s linear;
+       -moz-transition: height 0.2s linear;
+        -ms-transition: height 0.2s linear;
+         -o-transition: height 0.2s linear;
+            transition: height 0.2s linear;
 }
