@@ -110,3 +110,7 @@ a {
   background: white;
   cursor: pointer;
 }
+
+.hidden {
+  display: none;
+}
