@@ -1,3 +1,14 @@
+const newBook = document.getElementById('new')
+const form = document.getElementById('form')
+
+newBook.addEventListener('click', () => {
+  if (form.classList.contains('hidden')) {
+    form.classList.remove('hidden')
+  } else {
+    form.classList.add('hidden')
+  }
+})
+
 let reading = [];
 let read = [];
 
