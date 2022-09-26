@@ -1,13 +1,24 @@
 const newBook = document.getElementById('new')
+const noBook = document.getElementById('noBook')
 const form = document.getElementById('form')
 
-newBook.addEventListener('click', () => {
-  if (form.classList.contains('hidden')) {
-    form.classList.remove('hidden')
+function hideForm(prop) {
+  if (prop.classList.contains('hiddenForm')) {
+    prop.classList.remove('hiddenForm')
   } else {
-    form.classList.add('hidden')
+    prop.classList.add('hiddenForm')
   }
-})
+}
+
+newBook.addEventListener('click', () => {
+  hideForm(form)
+  }
+) 
+
+noBook.addEventListener('click', () => {
+  hideForm(form)
+  }
+) 
 
 let reading = [];
 let read = [];

@@ -13,6 +13,12 @@ a {
   text-decoration: none;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title {
   margin-left: 60px;
   margin-top: 18px;
@@ -41,6 +47,10 @@ a {
 .login {
   margin-right: 60px;
   margin-left: 24px;
+}
+
+.imgWithForm {
+  height: 305px;
 }
 
 .mainImg {
@@ -74,11 +84,29 @@ a {
             transition: height 0.2s linear;
 }
 
-.hidden {
+.hiddenForm {
   height: 0px;
     -webkit-transition: height 0.2s linear;
        -moz-transition: height 0.2s linear;
         -ms-transition: height 0.2s linear;
          -o-transition: height 0.2s linear;
             transition: height 0.2s linear;
+}
+
+.noBooks {
+  margin-top: 60px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  height: 350px;
+  width: 250px;
+}
+
+.bookButton {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 24px;
+  text-align: center;
+  border: none;
+  background: white;
+  cursor: pointer;
 }
