@@ -1,10 +1,10 @@
-let myLibrary = [];
+let reading = [];
+let read = [];
 
-function Book(title, author, pages, pagesRead, complete) {
+function Book(title, author, pages, complete) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.pagesRead = pagesRead;
   this.complete = complete;
 }
 
