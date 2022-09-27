@@ -2,6 +2,7 @@ const newBook = document.getElementById('new')
 const newBookTwo = document.getElementById('newBook')
 const form = document.getElementById('form')
 const noBook = document.getElementById('noBook')
+const formContent = document.getElementById('formContent')
 
 let reading = [1];
 let read = [];
@@ -25,8 +26,10 @@ function addBookToLibrary() {
 function hideForm(prop) {
   if (prop.classList.contains('hiddenForm')) {
     prop.classList.remove('hiddenForm')
+    formContent.classList.remove('hidden')
   } else {
     prop.classList.add('hiddenForm')
+    formContent.classList.add('hidden')
   }
 }
 
