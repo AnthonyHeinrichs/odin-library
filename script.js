@@ -3,7 +3,7 @@ const newBookTwo = document.getElementById('newBook')
 const form = document.getElementById('form')
 const noBook = document.getElementById('noBook')
 
-let reading = [];
+let reading = [1];
 let read = [];
 
 function Book(title, author, pages, complete) {
