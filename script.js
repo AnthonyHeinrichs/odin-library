@@ -2,7 +2,10 @@ const newBook = document.getElementById('new')
 const newBookTwo = document.getElementById('newBook')
 const form = document.getElementById('form')
 const noBook = document.getElementById('noBook')
+const cancel = document.getElementById('cancel')
 const formContent = document.getElementById('formContent')
+
+const formButtons = [newBook, newBookTwo, cancel]
 
 let reading = [1];
 let read = [];
@@ -23,22 +26,18 @@ function addBookToLibrary() {
   }
 })()
 
-function hideForm(prop) {
-  if (prop.classList.contains('hiddenForm')) {
-    prop.classList.remove('hiddenForm')
-    formContent.classList.remove('hidden')
+function hideForm() {
+  if (form.classList.contains('hiddenForm')) {
+    form.classList.remove('hiddenForm')
+    formContent.classList.remove('hiddenFormContent')
   } else {
-    prop.classList.add('hiddenForm')
-    formContent.classList.add('hidden')
+    form.classList.add('hiddenForm')
+    formContent.classList.add('hiddenFormContent')
   }
 }
 
-newBook.addEventListener('click', () => {
-  hideForm(form)
-  }
-) 
-
-newBookTwo.addEventListener('click', () => {
-  hideForm(form)
-  }
-) 
+for (let i = 0; i < formButtons.length; i++) {
+  formButtons[i].addEventListener('click', () => {
+    hideForm()
+  })
+}

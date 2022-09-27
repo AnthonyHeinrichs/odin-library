@@ -62,7 +62,7 @@ a {
 
 .imgRef {
   position: relative;
-  bottom: 48px;
+  bottom: 25px;
   right: -5px;
   text-decoration: none;
   color: white;
@@ -77,20 +77,90 @@ a {
   background: #DCF5B2;
   position: relative;
   bottom: 327px;
-  -webkit-transition: height 0.2s linear;
-       -moz-transition: height 0.2s linear;
-        -ms-transition: height 0.2s linear;
-         -o-transition: height 0.2s linear;
-            transition: height 0.2s linear;
+  -webkit-transition: height 0.1s linear;
+       -moz-transition: height 0.1s linear;
+        -ms-transition: height 0.1s linear;
+         -o-transition: height 0.1s linear;
+            transition: height 0.1s linear;
 }
 
 .hiddenForm {
   height: 0px;
-    -webkit-transition: height 0.2s linear;
-       -moz-transition: height 0.2s linear;
-        -ms-transition: height 0.2s linear;
-         -o-transition: height 0.2s linear;
-            transition: height 0.2s linear;
+    -webkit-transition: height 0.1s linear;
+       -moz-transition: height 0.1s linear;
+        -ms-transition: height 0.1s linear;
+         -o-transition: height 0.1s linear;
+            transition: height 0.1s linear;
+}
+
+.formRow {
+  display: flex;
+}
+
+.opacityFull {
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+       -moz-transition: opacity 1s;
+        -ms-transition: opacity 1s;
+         -o-transition: opacity 1s;
+            transition: opacity 1s;
+}
+
+.opacityZero {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+       -moz-transition: opacity 1s;
+        -ms-transition: opacity 1s;
+         -o-transition: opacity 1s;
+            transition: opacity 1s;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px 0px 40px;
+}
+
+label {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+input {
+  font-weight: 400;
+  font-size: 24px;
+  margin-top: 18px;
+  color: rgb(0, 101, 119);
+  border-top: none; 
+  border-left: none; 
+  border-right: none;
+  border-bottom: solid black;
+  background: none;
+}
+
+input[type="checkbox"] {
+  margin-left: 0;
+  margin-top: 25px;
+  align-self: start;
+  appearance: none;
+  background: none;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.1em;
+  transform: translateY(-0.075em);
+}
+
+input[type="checkbox"]:checked {
+  background: rgba(88, 34, 202, 0.582);
+}
+
+.formBtn {
+  background: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .noBooks {
@@ -112,6 +182,16 @@ a {
 
 .hidden {
   display: none;
+}
+
+.formContent {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.hiddenFormContent {
+  opacity: 0;
+  transition: opacity 0s;
 }
 
 .readingTitle, .readTitle {
