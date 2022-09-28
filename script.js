@@ -1,9 +1,10 @@
 const newBook = document.getElementById('new')
 const newBookTwo = document.getElementById('newBook')
 const formHtml = document.getElementById('formAll')
-const noBook = document.getElementById('noBook')
+
 const cancel = document.getElementById('cancel')
 const formContent = document.getElementById('formContent')
+
 
 const formSubmit = document.getElementById('submit')
 formSubmit.addEventListener('click', () => {
@@ -19,8 +20,8 @@ for (let i = 0; i < formButtons.length; i++) {
   })
 }
 
-let reading = [1];
-let read = [];
+const reading = [];
+const read = [];
 
 function Book(title, author, imgUrl, read) {
   this.title = title;
@@ -33,20 +34,23 @@ function addBookToLibrary() {
   let bookData = Array.from(document.querySelectorAll('#form input[type="text"]'))
   let pairData = bookData.reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {})
   let readState = document.querySelector('#form input[type="checkbox"]').checked
-  let title = pairData.title
-  let author = pairData.author
-  let imgUrl = pairData.imgUrl
-  const newBook = new Book(title, author, imgUrl, readState)
+  const newBook = new Book(pairData.title, pairData.author, pairData.imgUrl, readState)
   if (readState) {
     read.push(newBook)
   } else {
     reading.push(newBook)
   }
+  saveData()
 }
 
 (() => {
+  const noBook = document.getElementById('noBook')
+  const readingBooks = document.getElementById('readingBooks')
+  const readBooks = document.getElementById('readBooks')
   if (reading.length !== 0 || read.length !== 0) {
     noBook.classList.add('hidden')
+    readingBooks.classList.remove('hidden')
+    readBooks.classList.remove('hidden')
   }
 })()
 
@@ -60,3 +64,13 @@ function hideForm() {
   }
 }
 
+for (let i = 0; i < read.length ; i++) {
+  console.log(read[i].title)
+}
+
+function saveData() {
+  localStorage.setItem(`reading`, JSON.stringify(reading));
+  localStorage.setItem(`read`, JSON.stringify(read));
+}
+
+console.log(localStorage.getItem('read'))
