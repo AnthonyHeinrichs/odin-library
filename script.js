@@ -1,7 +1,6 @@
 const newBook = document.getElementById('new')
 const newBookTwo = document.getElementById('newBook')
 const formHtml = document.getElementById('formAll')
-
 const cancel = document.getElementById('cancel')
 const formContent = document.getElementById('formContent')
 
@@ -29,6 +28,17 @@ function Book(title, author, imgUrl, read) {
   this.imgUrl = imgUrl;
   this.read = read;
 }
+
+read.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+read.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+read.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+read.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+read.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+reading.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+reading.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+reading.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+reading.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
+reading.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
 
 function addBookToLibrary() {
   let bookData = Array.from(document.querySelectorAll('#form input[type="text"]'))
@@ -64,13 +74,27 @@ function hideForm() {
   }
 }
 
-for (let i = 0; i < read.length ; i++) {
-  console.log(read[i].title)
+function showBooks() {
+  for (let i = 0; i < read.length ; i++) {
+    createReadCard(read[i])
+  }
+  
+  for (let i = 0; i < reading.length ; i++) {
+    createReadingCard(read[i])
+  }
 }
+
+function createReadCard() {
+
+}
+
+function createReadingCard() {
+
+}
+
+
 
 function saveData() {
   localStorage.setItem(`reading`, JSON.stringify(reading));
   localStorage.setItem(`read`, JSON.stringify(read));
 }
-
-console.log(localStorage.getItem('read'))
