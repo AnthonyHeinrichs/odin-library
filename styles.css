@@ -157,7 +157,9 @@ input[type="checkbox"]:checked {
 }
 
 .formBtn {
+  margin-top: 20px;
   background: none;
+  padding: 6px;
   border-radius: 5px;
   font-size: 18px;
   font-weight: 500;
@@ -171,7 +173,7 @@ input[type="checkbox"]:checked {
   width: 250px;
 }
 
-.bookButton {
+.bookBtn {
   font-weight: 300;
   font-size: 24px;
   text-align: center;
@@ -260,13 +262,6 @@ input[type="checkbox"]:checked {
   border: none;
   cursor: pointer;
   background: rgba(255, 0, 0, 0.6);
-}
-
-.pages, .pagesText {
-  margin-left: 4px;
-  font-family: 'Lora';
-  font-weight: 400;
-  font-size: 16px;
 }
 
 .complete {

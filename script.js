@@ -4,16 +4,24 @@ const form = document.getElementById('form')
 const noBook = document.getElementById('noBook')
 const cancel = document.getElementById('cancel')
 const formContent = document.getElementById('formContent')
+const formSubmit = document.getElementById('submit')
+
+formSubmit.addEventListener('click', () => {
+  let bookData = Array.from(document.querySelectorAll('#createBook input[type="text"]'))
+  let readStatus = document.querySelector('#createBook input[type="checkbox"]')
+  let pairData = bookData.reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {})
+  console.log(pairData, readStatus.checked)
+})
 
 const formButtons = [newBook, newBookTwo, cancel]
 
 let reading = [1];
 let read = [];
 
-function Book(title, author, pages, complete) {
+function Book(title, author, imgUrl, complete) {
   this.title = title;
   this.author = author;
-  this.pages = pages;
+  this.imgUrl = imgUrl;
   this.complete = complete;
 }
 
