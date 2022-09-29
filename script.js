@@ -25,10 +25,10 @@ for (let i = 0; i < formButtons.length; i++) {
 // Initializing the array that holds our books and creating 
 // a card for each book
 const library = [];
-showBooks();
 
 // Constructor for creating new book instances 
-function Book(title, author, imgUrl, read) {
+function Book(id, title, author, imgUrl, read) {
+  this.id = id;
   this.title = title;
   this.author = author;
   this.imgUrl = imgUrl;
@@ -38,11 +38,16 @@ function Book(title, author, imgUrl, read) {
 // Takes data from the form and then creates a new book instance 
 // with the help of the book constructor
 function addBookToLibrary() {
+  let bookId = 0
   let bookData = Array.from(document.querySelectorAll('#form input[type="text"]'))
   let pairData = bookData.reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {})
   let readState = document.querySelector('#form input[type="checkbox"]').checked
-  const newBook = new Book(pairData.title, pairData.author, pairData.imgUrl, readState)
-  console.log(newBook)
+
+  if (library.length >= 1) {
+    bookId = library[library.length - 1].id + 1
+  }
+
+  const newBook = new Book(bookId, pairData.title, pairData.author, pairData.imgUrl, readState)
   library.push(newBook)
   createCard(newBook)
 }
@@ -71,7 +76,7 @@ function hideForm() {
   }
 }
 
-// Renders new books depending on a books read state
+// Renders all books in library array depending on a books read state
 function showBooks() {
   for (let i = 0; i < library.length ; i++) {
     createCard(library[i])
@@ -85,6 +90,7 @@ function createCard(book) {
 
   const cardType = document.createElement('div')
   cardType.classList.add('book')
+  cardType.id = book.id
   if (book.read) {
     readWrapper.appendChild(cardType)
   } else {
@@ -121,11 +127,36 @@ function createCard(book) {
 
   const cardRemove = document.createElement('button')
   cardRemove.classList.add('removeBtn')
+  cardRemove.id = 'remove'
   cardRemove.textContent = 'Remove'
   cardStats.appendChild(cardRemove)
 
+  // Removes the parent dive and recreates the book depending
+  // on the read status
+  cardComplete.addEventListener('click', () => {
+    const parentOne = event.target.parentElement
+    const id = parseInt(parentOne.parentElement.id)
+    library[id].read = !library[id].read
+    parentOne.parentElement.remove()
+    createCard(library[id])
+  })
+
+  // Removes the parent div of the book and removes the book
+  // from the library array
+  cardRemove.addEventListener('click', () => {
+    const parentOne = event.target.parentElement
+    const id = parseInt(parentOne.parentElement.id)
+    library.splice(id, 1)
+    parentOne.parentElement.remove()
+  })
   checkForBooks()
 }
+
+// Listen for removal of book and remove book
+
+
+
+
 
 // Save data to local storage to be pulled from later
 function saveData() {
