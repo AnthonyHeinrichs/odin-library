@@ -236,6 +236,10 @@ input[type="checkbox"]:checked {
 
 .bookTitle {
   margin-left: 10px;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: 'Lora';
   font-weight: 400;
   font-size: 18px;

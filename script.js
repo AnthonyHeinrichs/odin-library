@@ -62,6 +62,10 @@ const checkForBooks = () => {
     noBook.classList.add('hidden')
     readingBooks.classList.remove('hidden')
     readBooks.classList.remove('hidden')
+  } else {
+    noBook.classList.remove('hidden')
+    readingBooks.classList.add('hidden')
+    readBooks.classList.add('hidden')
   }
 }
 
@@ -148,15 +152,10 @@ function createCard(book) {
     const id = parseInt(parentOne.parentElement.id)
     library.splice(id, 1)
     parentOne.parentElement.remove()
+    checkForBooks()
   })
   checkForBooks()
 }
-
-// Listen for removal of book and remove book
-
-
-
-
 
 // Save data to local storage to be pulled from later
 function saveData() {
