@@ -22,8 +22,10 @@ for (let i = 0; i < formButtons.length; i++) {
   })
 }
 
-// Initializing the array that holds our books
-const library = [1];
+// Initializing the array that holds our books and creating 
+// a card for each book
+const library = [];
+showBooks();
 
 // Constructor for creating new book instances 
 function Book(title, author, imgUrl, read) {
@@ -33,18 +35,6 @@ function Book(title, author, imgUrl, read) {
   this.read = read;
 }
 
-// Temporary instances of new books for testing the dynamic html
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-library.push(new Book('To kill a mockingbird', 'Harper Lee', 'https://www.sequelbooks.com/assets/full/9780099419785.jpg?20210318035335', true))
-
 // Takes data from the form and then creates a new book instance 
 // with the help of the book constructor
 function addBookToLibrary() {
@@ -52,13 +42,14 @@ function addBookToLibrary() {
   let pairData = bookData.reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {})
   let readState = document.querySelector('#form input[type="checkbox"]').checked
   const newBook = new Book(pairData.title, pairData.author, pairData.imgUrl, readState)
+  console.log(newBook)
   library.push(newBook)
-  saveData()
+  createCard(newBook)
 }
 
 // Runs on page load to determine if there are any books, and
 // if not, shows a card asking user to add a new book to the library
-(() => {
+const checkForBooks = () => {
   const noBook = document.getElementById('noBook')
   const readingBooks = document.getElementById('readingBooks')
   const readBooks = document.getElementById('readBooks')
@@ -67,7 +58,7 @@ function addBookToLibrary() {
     readingBooks.classList.remove('hidden')
     readBooks.classList.remove('hidden')
   }
-})()
+}
 
 // Hides the form or opens the form depending on the forms state
 function hideForm() {
@@ -83,24 +74,62 @@ function hideForm() {
 // Renders new books depending on a books read state
 function showBooks() {
   for (let i = 0; i < library.length ; i++) {
-    if (library[i].read) {
-      createReadCard(library[i])
-    } else {
-      createReadingCard(library[i])
-    }
+    createCard(library[i])
   }
 }
 
 // Creates and appends the html elements to show the book instances
-function createReadCard() {
+function createCard(book) {
+  const readingWrapper = document.querySelector('#reading')
+  const readWrapper = document.querySelector('#readBook')
 
-}
+  const cardType = document.createElement('div')
+  cardType.classList.add('book')
+  if (book.read) {
+    readWrapper.appendChild(cardType)
+  } else {
+    readingWrapper.appendChild(cardType)
+  }
+  
+  const cardImg = document.createElement('img')
+  cardImg.classList.add('bookImg')
+  cardImg.src = book.imgUrl
+  cardImg.alt = book.title
+  cardType.appendChild(cardImg)
 
-function createReadingCard() {
+  const cardTitle = document.createElement('p')
+  cardTitle.classList.add('bookTitle')
+  cardTitle.textContent = book.title
+  cardType.appendChild(cardTitle)
 
+  const cardAuthor = document.createElement('p')
+  cardAuthor.classList.add('author')
+  cardAuthor.textContent = book.author
+  cardType.appendChild(cardAuthor)
+
+  const cardStats = document.createElement('div')
+  cardStats.classList.add('stats')
+  cardType.appendChild(cardStats)
+  
+  const cardComplete = document.createElement('button')
+  if (book.read) {
+    cardComplete.classList.add('complete')
+  } else {
+    cardComplete.classList.add('notComplete')
+  }
+  cardStats.appendChild(cardComplete)
+
+  const cardRemove = document.createElement('button')
+  cardRemove.classList.add('removeBtn')
+  cardRemove.textContent = 'Remove'
+  cardStats.appendChild(cardRemove)
+
+  checkForBooks()
 }
 
 // Save data to local storage to be pulled from later
 function saveData() {
   localStorage.setItem(`library`, JSON.stringify(library));
 }
+
+checkForBooks()
