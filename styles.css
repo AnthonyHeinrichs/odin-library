@@ -61,6 +61,7 @@ a {
 }
 
 .imgRef {
+  margin-left: 60px;
   position: relative;
   bottom: 25px;
   right: -5px;

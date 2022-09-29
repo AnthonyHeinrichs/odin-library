@@ -43,6 +43,10 @@ function addBookToLibrary() {
   let pairData = bookData.reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {})
   let readState = document.querySelector('#form input[type="checkbox"]').checked
 
+  if (pairData.imgUrl.length === 0) {
+    pairData.imgUrl = 'https://images.unsplash.com/photo-1548191194-b3d4f051fd7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+  }
+
   if (library.length >= 1) {
     bookId = library[library.length - 1].id + 1
   }
