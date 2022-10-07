@@ -27,12 +27,14 @@ for (let i = 0; i < formButtons.length; i++) {
 const library = [];
 
 // Constructor for creating new book instances 
-function Book(id, title, author, imgUrl, read) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.imgUrl = imgUrl;
-  this.read = read;
+class Book {
+  constructor(id, title, author, imgUrl, read) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    this.imgUrl = imgUrl;
+    this.read = read;
+  }
 }
 
 // Takes data from the form and then creates a new book instance 
